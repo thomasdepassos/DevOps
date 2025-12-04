@@ -1,0 +1,16 @@
+name: Trivy GHCR Scan
+
+on:
+  workflow_dispatch:
+
+jobs:
+  trivy-ghcr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Trivy on GHCR image
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'image'
+          image-ref: 'ghcr.io/servercontainers/apache2-ssl-secure:latest'
+          format: 'table'
+          exit-code: '1'
