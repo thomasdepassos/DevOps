@@ -18,3 +18,10 @@ spec:
         image: ghcr.io/servercontainers/apache2-ssl-secure:latest
         ports:
         - containerPort: 80
+        volumeMounts:
+        - name: apache-html-volume
+          mountPath: /var/www/html
+      volumes:
+      - name: apache-html-volume
+        configMap:
+          name: apache-html
