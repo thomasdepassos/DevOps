@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-html
+  namespace: nginx
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>NGINX - Environnement OK</title>
+        <style>
+            body {
+                background-color: #0090ff;
+                color: white;
+                font-family: Arial, sans-serif;
+                text-align: center;
+                padding-top: 100px;
+            }
+            h1 { font-size: 48px; }
+            p { font-size: 22px; }
+        </style>
+    </head>
+    <body>
+        <h1>🚀 NGINX fonctionne correctement !</h1>
+        <p>Vous êtes sur le service <strong>NGINX</strong>.</p>
+    </body>
+    </html>
