@@ -14,12 +14,27 @@ jobs:
           scan-type: 'image'
           image-ref: 'ghcr.io/servercontainers/apache2-ssl-secure:latest'
           format: 'table'
-          output: 'trivy-report.txt'   # <-- le rapport sera écrit ici
+          output: 'trivy-report-apache.txt'   # <-- le rapport sera écrit ici
           exit-code: '0'
 
-      - name: Upload Trivy report as artifact
+      - name: Run Trivy on GHCR image and save report
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'image'
+          image-ref: 'ghcr.io/linuxserver/nginx:latest'
+          format: 'table'
+          output: 'trivy-report-nginx.txt'   # <-- le rapport sera écrit ici
+          exit-code: '0'
+
+      - name: Upload Trivy report apache
         uses: actions/upload-artifact@v4
         with:
-          name: trivy-report
-          path: trivy-report.txt       # <-- chemin du fichier généré
+          name: trivy-report-apache
+          path: trivy-report-apache.txt   # <-- chemin du fichier généré
+
+      - name: Upload Trivy report nginx
+        uses: actions/upload-artifact@v4
+        with:
+          name: trivy-report-nginx
+          path: trivy-report-nginx.txt
 
