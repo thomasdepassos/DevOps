@@ -5,6 +5,7 @@ namespace: prod
 
 resources:
   - ../../base
+  - prod-namespace.yaml
 
 patches:
   - path: patch-configmap.yaml
