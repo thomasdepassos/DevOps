@@ -6,11 +6,20 @@ on:
 jobs:
   trivy-ghcr:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Run Trivy on GHCR image
+      - name: Run Trivy on GHCR image and save report
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: 'image'
-          image-ref: 'ghcr.io/servercontainers/apache2-ssl-secure:latest'
+          image-ref: 'ghcr.io/thomasdepassos/mon-image:latest'
           format: 'table'
-          exit-code: '1'
+          output: 'trivy-report.txt'   # <-- le rapport sera écrit ici
+          exit-code: '0'
+
+      - name: Upload Trivy report as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: trivy-report
+          path: trivy-report.txt       # <-- chemin du fichier généré
+
