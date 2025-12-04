@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  namespace: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: ghcr.io/linuxserver/nginx:latest
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: nginx-html-volume
+          mountPath: /config/www/
+      volumes:
+      - name: nginx-html-volume
+        configMap:
+          name: nginx-html
+
