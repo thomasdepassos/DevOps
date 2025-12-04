@@ -12,7 +12,7 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: 'image'
-          image-ref: 'ghcr.io/thomasdepassos/mon-image:latest'
+          image-ref: 'ghcr.io/servercontainers/apache2-ssl-secure:latest'
           format: 'table'
           output: 'trivy-report.txt'   # <-- le rapport sera écrit ici
           exit-code: '0'
