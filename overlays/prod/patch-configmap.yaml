@@ -2,6 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: nginx-html
+  namespace: prod
 data:
   index.html: |
     <!DOCTYPE html>
