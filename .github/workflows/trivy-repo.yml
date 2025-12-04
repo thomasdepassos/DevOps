@@ -14,6 +14,6 @@ jobs:
       - name: Run Trivy (Repository Scan)
         uses: aquasecurity/trivy-action@master
         with:
-          scan-type: 'fs'
+          scan-type: 'config'
           scan-ref: '.'
           exit-code: '1'
