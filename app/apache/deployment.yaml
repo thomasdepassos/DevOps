@@ -17,4 +17,4 @@ spec:
       - name: apache
         image: ghcr.io/servercontainers/apache2-ssl-secure:latest
         ports:
-        - containerPort: 8080
+        - containerPort: 80
